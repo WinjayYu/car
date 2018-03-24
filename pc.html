@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="content-type" content='text/html;charset=utf-8'/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <meta name="format-detection" content="telephone=no,address=no"/>
+  <title>pc首页</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/pc_style.css">
+</head>
+<body>
+<div class="wrap pc">
+  <div class="car_con">
+    <img src="./images/go-into.png" alt="" class="rotate ro_left">
+    <div class="car_img" id="car360"></div>
+    <img src="./images/go-into.png" alt="" class="rotate ro_right">
+    <span class="jump">观看内饰</span>
+  </div>
+  <div class="butt_group">
+    <p class="car_color">白色</p>
+    <div class="color_blocks">
+      <span class="color_item color_active white" data-color="white"></span>
+      <span class="color_item black" data-color="black"></span>
+      <span class="color_item red" data-color="red"></span>
+      <span class="color_item crystal" data-color="crystal"></span>
+      <span class="color_item brown" data-color="brown"></span>
+    </div>
+    <div class="hubcaps">
+      <span class="hubcap_item wheel_active" data-wheel="limit">轮毂一</span>
+      <span class="hubcap_item" data-wheel="overland">轮毂二</span>
+      <span class="hubcap_item" data-wheel="summit">轮毂三</span>
+    </div>
+  </div>
+</div>
+<div class="inner">
+  <div id="vr_show"></div>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/spritespin/3.4.3/spritespin.min.js"></script>
+<script src="js/photo-sphere-viewer.js"></script>
+<script>
+  var isFirst = true;  // 是否第一次访问
+
+  $(document).ready(function () {
+    var carObj = new car();
+    carObj.listeners();
+    carObj.load360();
+  })
+
+  var car = function car() {
+    this.color = 'white';    // 颜色
+    this.wheel = 'limited';   // 轮毂
+    this.height = 550; // 初始高度
+    this.colorText = {
+      white: '白色',
+      red: '红色',
+      crystal: '水晶色',
+      brown: '棕色',
+      blue: '蓝色',
+      black: '黑色'
+    }
+  }
+
+  // 监听按钮点击
+  car.prototype.listeners = function listeners() {
+
+    $('.innder').hide();
+    $('.wrap').show();
+    var vm = this;
+    var $colorItemList = $('.color_item') // 颜色按钮
+    var $hubcapItemList = $('.hubcap_item') // 轮毂按钮
+    var $carColor = $('.car_color');  // 颜色文字
+
+    $colorItemList.on('click', function (e) {
+      var $me = $(this);
+      $colorItemList.removeClass('color_active');
+      $me.addClass('color_active');
+      vm.color = $me.data('color');
+      $carColor.text(vm.colorText[vm.color]);
+      vm.load360();
+      isFirst = false;
+    })
+
+    $hubcapItemList.on('click', function (e) {
+      var $me = $(this);
+      $hubcapItemList.removeClass('wheel_active');
+      $me.addClass('wheel_active');
+      vm.wheel = $me.data('wheel');
+      console.log(vm);
+      vm.load360();
+      isFirst = false;
+    })
+
+    $('.jump').on('click', function (e) {
+      var innderCar = new innerCar();
+      innderCar.addScript();
+    })
+  }
+
+  car.prototype.load360 = function load360() {
+    var width = window.screen.availWidth - 17;
+    var height = $('.car_con').height();
+    var frames = SpriteSpin.sourceArray('./images/1920_550/K8_360_comp_lm_' + this.color + '_' + this.wheel + '_1920_550_v008/K8_360_comp_lm_' + this.color + '_' + this.wheel + '_1920_550_v008.{frame}.png', {
+      frame: [0, 60],
+      digits: 4
+    });
+    $("#car360").spritespin({
+      width: width,
+      height: height,
+      behavior: "drag",
+      module: "360",
+      sense: -1,
+      source: frames,
+      animate: false
+    });
+  }
+
+  var innerCar = function () {
+    this.color = 'white';
+    this.row = 2;
+  }
+
+  innerCar.prototype.lists = function lists() {
+    var vm = this;
+
+  }
+
+  innerCar.prototype.addScript = function load() {
+    var vm = this;
+    if (isFirst) {
+      var scriptForPhoto = document.createElement("script");
+      scriptForPhoto.type = "text/javascript";
+      scriptForPhoto.src = "./js/photo-sphere-viewer.js";
+      document.body.appendChild(scriptForPhoto);
+
+      var scriptForThree = document.createElement("script");
+      scriptForThree.type = "text/javascript";
+      scriptForThree.src = "./js/three.min.js";
+      document.body.appendChild(scriptForThree);
+
+      scriptForThree.onload = function () {
+        $('.wrap').hide();
+        $('.innder').show();
+        vm.loadVR();
+      }
+    }
+  }
+
+  innerCar.prototype.loadVR = function loadVR() {
+    var vrShow = document.getElementById('vr_show');
+    var PSV = new PhotoSphereViewer({
+      // Path to the panorama
+      panorama: './images/fullscreen/三排_棕.jpg',
+
+      // Container
+      container: vrShow,
+      time_anim: 3000,
+      navbar: true,
+      navbar_style: {
+        backgroundColor: 'rgba(58, 67, 77, 0.7)'
+      },
+      size: {
+        height: window.screen.availHeight
+      }
+    });
+  }
+
+</script>
+</body>
+</html>

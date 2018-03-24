@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="content-type" content='text/html;charset=utf-8' />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no,address=no" />
+  <title>手机首页</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/mobile_style.css">
+  <script>
+    var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.getElementsByTagName('body')[0],
+      width = w.innerWidth || e.clientWidth || g.clientWidth;
+    if(width > 800) {
+        window.location.href = './pc.html';
+    }
+  </script>
+</head>
+<body>
+  <div class="wrap mobile">
+    <div class="logo">Jeep</div>
+    <div class="car_con">
+      <img src="./images/go-into.png" alt="" class="rotate ro_left">
+      <img src="./images/640_1008/K8_360_comp_lm_white_limited_640_1008_v008/K8_360_comp_lm_white_limited_640_1008_v008.0000.png" alt="" class="car_img place_img">
+      <div class="car_img" id="car360"></div>
+      <img src="./images/go-into.png" alt="" class="rotate ro_right">
+      <span class="jump">观看内饰</span>
+    </div>
+    <div class="butt_group">
+      <p class="car_color">白色</p>
+      <div class="color_blocks">
+        <span class="color_item color_active white" data-color="white"></span>
+        <span class="color_item black" data-color="black"></span>
+        <span class="color_item red" data-color="red"></span>
+        <span class="color_item crystal" data-color="crystal"></span>
+        <span class="color_item brown" data-color="brown"></span>
+      </div>
+      <div class="hubcaps">
+        <span class="hubcap_item wheel_active" data-wheel="limit">轮毂一</span>
+        <span class="hubcap_item" data-wheel="overland">轮毂二</span>
+        <span class="hubcap_item" data-wheel="summit">轮毂三</span>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/spritespin/3.4.3/spritespin.min.js"></script>
+  <script>
+    var isFirst = true;  // 是否第一次访问
+
+    $(document).ready(function () {
+      var carObj = new car();
+      carObj.listeners();
+      carObj.load360();
+    })
+
+    var car = function car() {
+      this.color = 'white';    // 颜色
+      this.wheel = 'limited';   // 轮毂
+      this.height = 550; // 初始高度
+      this.colorText = {
+        white: '白色',
+        red: '红色',
+        crystal: '水晶色',
+        brown: '棕色',
+        blue: '蓝色',
+        black: '黑色'
+      }
+    }
+
+    // 监听按钮点击
+    car.prototype.listeners = function listeners() {
+      var vm = this;
+      var $colorItemList = $('.color_item') // 颜色按钮
+      var $hubcapItemList = $('.hubcap_item') // 轮毂按钮
+      var $carColor = $('.car_color');  // 颜色文字
+
+      $colorItemList.on('click', function (e) {
+        var $me = $(this);
+        $colorItemList.removeClass('color_active');
+        $me.addClass('color_active');
+        vm.color = $me.data('color');
+        $carColor.text(vm.colorText[vm.color]);
+        vm.load360();
+        isFirst = false;
+      })
+
+      $hubcapItemList.on('click', function (e) {
+        var $me = $(this);
+        $hubcapItemList.removeClass('wheel_active');
+        $me.addClass('wheel_active');
+        vm.wheel = $me.data('wheel');
+        console.log(vm);
+        vm.load360();
+        isFirst = false;
+      })
+    }
+
+    car.prototype.load360 = function load360() {
+      var width = window.screen.availWidth;
+      var height = $('.car_con').height();
+      var frames = SpriteSpin.sourceArray('./images/640_1008/K8_360_comp_lm_' + this.color + '_' + this.wheel +'_640_1008_v008/K8_360_comp_lm_' + this.color + '_' +this.wheel +'_640_1008_v008.{frame}.png', { frame: [0, 60], digits: 4 });
+      $("#car360").spritespin({
+        width: width,
+        height: height,
+        behavior: "drag",
+        module: "360",
+        sense: -1,
+        source: frames,
+        animate: false
+      });
+    }
+
+  </script>
+</body>
+</html>

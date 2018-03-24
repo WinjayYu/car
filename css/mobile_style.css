@@ -1,0 +1,114 @@
+
+
+/*手机版*/
+
+.mobile {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.mobile .logo {
+  height: 42px;
+  background: #191919;
+  color: #fff;
+  font-size: 30px;
+  padding-left: 10px;
+}
+
+.mobile .car_con {
+  position: relative;
+}
+
+.mobile .car_con .place_img {
+  visibility: hidden;
+  width: 100%;
+  /*margin-top: -100px;*/
+}
+
+.mobile #car360 {
+  position: absolute!important;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.mobile .car_con .rotate {
+  position: absolute;
+  top: 300px;
+  width: 39px;
+}
+
+.mobile .car_con .ro_left {
+  transform: rotate(180deg);
+  left: 25px;
+}
+
+.mobile .car_con .ro_right {
+  right: 25px;
+}
+
+.mobile .jump {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  background: #e6e6e6;
+  border-radius: 3px;
+  padding: 4px 11px;
+}
+
+.mobile .butt_group {
+  text-align: center;
+  position: fixed;
+  bottom: 10px;
+  z-index: 9;
+  width: 100%;
+}
+
+.mobile .car_color {
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #000000;
+  text-align: center;
+  line-height: 30px;
+}
+
+.mobile .color_blocks {
+  font-size: 0;
+}
+
+.mobile .color_blocks .color_item{
+  display: inline-block;
+  border-radius: 3px;
+  width: 59px;
+  height: 31px;
+  margin-left: 5px;
+  transition: all .3s ease;
+  margin-top: 9px;
+}
+
+.mobile .color_blocks .color_item:first-child {
+  margin: 0;
+}
+
+.mobile .color_blocks .color_active {
+  box-shadow: 0 1px 12px 0 rgba(0,0,0,0.60);
+  transform: scale(1.25);
+}
+
+.mobile .hubcaps {
+  margin-top: 18px;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #000000;
+}
+
+.mobile .hubcaps .hubcap_item {
+  background: #e6e6e6;
+  border-radius: 3px;
+  padding: 4px 18px;
+  transition: background .3s ease;
+}
+
+.mobile .hubcaps .wheel_active {
+  background: #F5BB3F;
+}

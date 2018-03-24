@@ -1,0 +1,94 @@
+.pc {
+    min-width: 1200px;
+}
+
+.pc .car_con {
+    position: relative;
+    min-height: 550px;
+}
+
+.pc .car_img {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+
+.pc .rotate {
+    position: absolute;
+    top: 329px;
+}
+
+.pc .ro_left {
+    left: 104px;
+    transform: rotate(180deg);
+}
+
+.pc .ro_right {
+    right: 104px;
+}
+
+.pc .jump {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    background: #e6e6e6;
+    border-radius: 3px;
+    padding: 8px 22px;
+}
+
+.pc .butt_group {
+    text-align: center;
+}
+
+.pc .car_color {
+    font-family: PingFangSC-Regular;
+    font-size: 24px;
+    color: #000000;
+    text-align: center;
+    line-height: 30px;
+}
+
+.pc .color_blocks {
+    font-size: 0;
+}
+
+.pc .color_blocks .color_item{
+    display: inline-block;
+    border-radius: 3px;
+    width: 58px;
+    height: 30px;
+    margin-left: 10px;
+    transition: all .3s ease;
+    margin-top: 18px;
+}
+
+.pc .color_blocks .color_active {
+    box-shadow: 0 1px 12px 0 rgba(0,0,0,0.60);
+    transform: scale(1.4);
+}
+
+.pc .hubcaps {
+    margin-top: 30px;
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    color: #000000;
+}
+
+.pc .hubcaps .hubcap_item {
+    background: #e6e6e6;
+    border-radius: 3px;
+    padding: 5px 23px;
+    transition: background .3s ease;
+}
+
+.pc .hubcaps .wheel_active {
+    background: #F5BB3F;
+}
+
+#vr_show {
+    width: 100%;
+    height: 100%;
+}
