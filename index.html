@@ -100,7 +100,7 @@
     }
 
     car.prototype.load360 = function load360() {
-      var width = window.screen.availWidth;
+      var width = window.innerWidth || document.clientWidth;
       var height = $('.car_con').height();
       var frames = SpriteSpin.sourceArray('./images/640_1008/K8_360_comp_lm_' + this.color + '_' + this.wheel +'_640_1008_v008/K8_360_comp_lm_' + this.color + '_' +this.wheel +'_640_1008_v008.{frame}.png', { frame: [0, 60], digits: 4 });
       $("#car360").spritespin({

@@ -19,16 +19,19 @@
     <span class="jump">观看内饰</span>
   </div>
   <div class="butt_group">
-    <p class="car_color">白色</p>
+    <div class="menu">
+      <span class="menu_item menu_active">颜色</span>
+      <span class="menu_item">轮毂</span>
+    </div>
     <div class="color_blocks">
-      <span class="color_item color_active white" data-color="white"></span>
-      <span class="color_item black" data-color="black"></span>
-      <span class="color_item red" data-color="red"></span>
-      <span class="color_item crystal" data-color="crystal"></span>
-      <span class="color_item brown" data-color="brown"></span>
+      <div class="color_text_wrap"><span class="color_item color_active white" data-color="white"></span><p class="text_for_color">白色</p></div>
+      <div class="color_text_wrap"><span class="color_item black" data-color="black"></span><p class="text_for_color"></p></div>
+      <div class="color_text_wrap"><span class="color_item red" data-color="red"></span><p class="text_for_color"></p></div>
+      <div class="color_text_wrap"><span class="color_item crystal" data-color="crystal"></span><p class="text_for_color"></p></div>
+      <div class="color_text_wrap"><span class="color_item brown" data-color="brown"></span><p class="text_for_color"></p></div>
     </div>
     <div class="hubcaps">
-      <span class="hubcap_item wheel_active" data-wheel="limit">轮毂一</span>
+      <span class="hubcap_item wheel_active" data-wheel="limited">轮毂一</span>
       <span class="hubcap_item" data-wheel="overland">轮毂二</span>
       <span class="hubcap_item" data-wheel="summit">轮毂三</span>
     </div>
@@ -36,6 +39,26 @@
 </div>
 <div class="inner">
   <div id="vr_show"></div>
+  <div class="i_footer">
+    <div class="i_butts">
+      <div class="i_menu">
+        <span class="i_menu_item i_menu_active">颜色</span>
+        <span class="i_menu_item">轮毂</span>
+      </div>
+      <div class="i_color_blocks">
+        <div class="i_color_text_wrap"><span class="i_color_item i_color_active white" data-color="white"></span><p class="text_for_color">白色</p></div>
+        <div class="i_color_text_wrap"><span class="i_color_item black" data-color="black"></span><p class="text_for_color"></p></div>
+        <div class="i_color_text_wrap"><span class="i_color_item red" data-color="red"></span><p class="text_for_color"></p></div>
+        <div class="i_color_text_wrap"><span class="i_color_item crystal" data-color="crystal"></span><p class="text_for_color"></p></div>
+        <div class="i_color_text_wrap"><span class="i_color_item brown" data-color="brown"></span><p class="text_for_color"></p></div>
+      </div>
+      <div class="angle">
+        <span class="angle_item angle_active" data-wheel="limited">驾驶位视角</span>
+        <span class="angle_item" data-wheel="overland">后座视角</span>
+        <span class="angle_item" data-wheel="summit">驾驶位视角</span>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.min.js"></script>
@@ -70,16 +93,17 @@
     $('.innder').hide();
     $('.wrap').show();
     var vm = this;
-    var $colorItemList = $('.color_item') // 颜色按钮
-    var $hubcapItemList = $('.hubcap_item') // 轮毂按钮
-    var $carColor = $('.car_color');  // 颜色文字
+    var $colorItemList = $('.color_item'); // 颜色按钮
+    var $hubcapItemList = $('.hubcap_item'); // 轮毂按钮
+    var $menuItem = $('.menu_item'); // 颜色轮毂菜单
+    var $menu = $('.menu');
 
     $colorItemList.on('click', function (e) {
       var $me = $(this);
       $colorItemList.removeClass('color_active');
       $me.addClass('color_active');
       vm.color = $me.data('color');
-      $carColor.text(vm.colorText[vm.color]);
+      $me.next().text(vm.colorText[vm.color]);
       vm.load360();
       isFirst = false;
     })
@@ -97,6 +121,12 @@
     $('.jump').on('click', function (e) {
       var innderCar = new innerCar();
       innderCar.addScript();
+    })
+
+    // 颜色和轮毂菜单
+    $menuItem.on('click', function (e) {
+      var $me = $(this);
+      $menu.removeClass('.menu_color');
     })
   }
 
@@ -163,7 +193,7 @@
         backgroundColor: 'rgba(58, 67, 77, 0.7)'
       },
       size: {
-        height: window.screen.availHeight
+        height: window.innerHeight || document.clientHeight
       }
     });
   }
