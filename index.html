@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta name="format-detection" content="telephone=no,address=no" />
+  <meta http-equiv="cache-control" content="max-age=0" />
+  <meta http-equiv="cache-control" content="no-cache" />
   <title>手机首页</title>
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/mobile_style.css">
@@ -25,7 +27,7 @@
     <div class="logo">Jeep</div>
     <div class="car_con">
       <img src="./images/go-into.png" alt="" class="rotate ro_left">
-      <img src="./images/640_1008/K8_360_comp_lm_white_limited_640_1008_v008/K8_360_comp_lm_white_limited_640_1008_v008.0000.png" alt="" class="car_img place_img">
+      <img src="./images/640_1008/K8_360_comp_lm_white_limited_640_1008_v008/K8_360_comp_lm_white_limited_640_1008_v008.0000.png" alt="" class="car_img place_img" onload="load()">
       <div class="car_img" id="car360"></div>
       <img src="./images/go-into.png" alt="" class="rotate ro_right">
       <span class="jump">观看内饰</span>
@@ -51,11 +53,15 @@
   <script>
     var isFirst = true;  // 是否第一次访问
 
-    $(document).ready(function () {
+    function load() {
       var carObj = new car();
       carObj.listeners();
       carObj.load360();
-    })
+    }
+//
+//    $(document).ready(function () {
+//
+//    })
 
     var car = function car() {
       this.color = 'white';    // 颜色

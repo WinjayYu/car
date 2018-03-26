@@ -6,22 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
   <meta name="format-detection" content="telephone=no,address=no"/>
+  <meta http-equiv="cache-control" content="max-age=0" />
+  <meta http-equiv="cache-control" content="no-cache" />
   <title>pc首页</title>
   <link rel="stylesheet" href="./css/reset.css">
-  <link rel="stylesheet" href="./css/pc_style.css">
+  <link rel="stylesheet" href="./css/pc_style_v003.css">
 </head>
 <body>
 <div class="wrap pc">
   <div class="car_con">
     <img src="./images/go-into.png" alt="" class="rotate ro_left">
+    <img src="./images/1920_550/K8_360_comp_lm_black_limited_1920_550_v008/K8_360_comp_lm_black_limited_1920_550_v008.0000.png" alt="" class="place_img" style="width: 100%">
     <div class="car_img" id="car360"></div>
     <img src="./images/go-into.png" alt="" class="rotate ro_right">
-    <span class="jump">观看内饰</span>
   </div>
   <div class="butt_group">
     <div class="menu">
-      <span class="menu_item menu_active">颜色</span>
-      <span class="menu_item">轮毂</span>
+      <span class="menu_item menu_active" id="menu_color">颜色</span>
+      <span class="menu_item" id="menu_hubcaps">轮毂</span>
     </div>
     <div class="color_blocks">
       <div class="color_text_wrap"><span class="color_item color_active white" data-color="white"></span><p class="text_for_color">白色</p></div>
@@ -31,10 +33,15 @@
       <div class="color_text_wrap"><span class="color_item brown" data-color="brown"></span><p class="text_for_color"></p></div>
     </div>
     <div class="hubcaps">
-      <span class="hubcap_item wheel_active" data-wheel="limited">轮毂一</span>
-      <span class="hubcap_item" data-wheel="overland">轮毂二</span>
-      <span class="hubcap_item" data-wheel="summit">轮毂三</span>
+      <span class="hubcap_item wheel_active" data-wheel="limited"><img src="./images/hubcap-1.png" alt=""></span>
+      <span class="hubcap_item" data-wheel="overland"><img src="./images/hubcap-2.png" alt=""></span>
+      <span class="hubcap_item" data-wheel="summit"><img src="./images/hubcap-3.png" alt=""></span>
+      <p class="hubcap_text">19”合金轮毂-Summit</p>
     </div>
+  </div>
+  <div class="out_foot_right">
+    <img src="./images/steering_wheel.png" alt="" class="jump">
+    <p class="steering_text">内饰</p>
   </div>
 </div>
 <div class="inner">
@@ -42,30 +49,54 @@
   <div class="i_footer">
     <div class="i_butts">
       <div class="i_menu">
-        <span class="i_menu_item i_menu_active">颜色</span>
-        <span class="i_menu_item">轮毂</span>
+        <span class="i_menu_item i_menu_active" id="i_color">颜色</span>
+        <span class="i_menu_item" id="i_angle">视角</span>
       </div>
       <div class="i_color_blocks">
-        <div class="i_color_text_wrap"><span class="i_color_item i_color_active white" data-color="white"></span><p class="text_for_color">白色</p></div>
-        <div class="i_color_text_wrap"><span class="i_color_item black" data-color="black"></span><p class="text_for_color"></p></div>
-        <div class="i_color_text_wrap"><span class="i_color_item red" data-color="red"></span><p class="text_for_color"></p></div>
-        <div class="i_color_text_wrap"><span class="i_color_item crystal" data-color="crystal"></span><p class="text_for_color"></p></div>
-        <div class="i_color_text_wrap"><span class="i_color_item brown" data-color="brown"></span><p class="text_for_color"></p></div>
+        <div class="i_color_text_wrap"><span class="i_color_item i_color_active brown" data-color="brown"></span><p class="text_for_color">棕色</p></div>
+        <div class="i_color_text_wrap"><span class="i_color_item white" data-color="white"></span><p class="text_for_color">白色</p></div>
+        <div class="i_color_text_wrap"><span class="i_color_item black" data-color="black"></span><p class="text_for_color">黑色</p></div>
       </div>
       <div class="angle">
-        <span class="angle_item angle_active" data-wheel="limited">驾驶位视角</span>
-        <span class="angle_item" data-wheel="overland">后座视角</span>
-        <span class="angle_item" data-wheel="summit">驾驶位视角</span>
+        <div class="angle_wrap angle_active">
+            <div class="three_row">
+              <div class="row_block"></div>
+              <div class="row_block"></div>
+              <div class="row_block"></div>
+            </div>
+            <p class="angle_item" data-row="one">驾驶位视角</p>
+        </div>
+        <div class="angle_wrap">
+          <div class="three_row">
+            <div class="row_block"></div>
+            <div class="row_block"></div>
+            <div class="row_block"></div>
+          </div>
+          <p class="angle_item" data-row="two">中排视角</p>
+        </div>
+        <div class="angle_wrap">
+          <div class="three_row">
+            <div class="row_block"></div>
+            <div class="row_block"></div>
+            <div class="row_block"></div>
+          </div>
+          <p class="angle_item" data-row="three">后排视角</p>
+        </div>
       </div>
+    </div>
+    <div class="footer_right">
+      <img src="./images/out_look.png" alt="" class="go_to_out">
+      <p>外观</p>
     </div>
   </div>
 </div>
 
 <script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/spritespin/3.4.3/spritespin.min.js"></script>
-<script src="js/photo-sphere-viewer.js"></script>
 <script>
   var isFirst = true;  // 是否第一次访问
+  var isOut = true;  // true在外观页  false在内饰页
+  var innerCar;
 
   $(document).ready(function () {
     var carObj = new car();
@@ -73,7 +104,7 @@
     carObj.load360();
   })
 
-  var car = function car() {
+  var car = function Car() {
     this.color = 'white';    // 颜色
     this.wheel = 'limited';   // 轮毂
     this.height = 550; // 初始高度
@@ -84,8 +115,15 @@
       brown: '棕色',
       blue: '蓝色',
       black: '黑色'
-    }
-  }
+    };
+    this.colorValue = {
+      white: '#999999',
+      red: '#A60000',
+      crystal: '#D3B98E',
+      brown: '#A86233',
+      black: '#191919'
+    };
+  };
 
   // 监听按钮点击
   car.prototype.listeners = function listeners() {
@@ -96,43 +134,61 @@
     var $colorItemList = $('.color_item'); // 颜色按钮
     var $hubcapItemList = $('.hubcap_item'); // 轮毂按钮
     var $menuItem = $('.menu_item'); // 颜色轮毂菜单
-    var $menu = $('.menu');
+    var $hubcapText = $('.hubcap_text');
 
     $colorItemList.on('click', function (e) {
+      e.stopPropagation();
       var $me = $(this);
       $colorItemList.removeClass('color_active');
+      $colorItemList.css('box-shadow','none');
       $me.addClass('color_active');
       vm.color = $me.data('color');
+      $me.css('box-shadow', '0 0 0 3px #d1e9f9, 0 0 0 5px' +　vm.colorValue[vm.color]);
       $me.next().text(vm.colorText[vm.color]);
       vm.load360();
       isFirst = false;
-    })
+    });
 
     $hubcapItemList.on('click', function (e) {
+      e.stopPropagation();
       var $me = $(this);
       $hubcapItemList.removeClass('wheel_active');
       $me.addClass('wheel_active');
       vm.wheel = $me.data('wheel');
-      console.log(vm);
+      $hubcapText.text('19”合金轮毂-' + vm.wheel);
       vm.load360();
       isFirst = false;
-    })
+    });
 
     $('.jump').on('click', function (e) {
-      var innderCar = new innerCar();
-      innderCar.addScript();
-    })
+      e.stopPropagation();
+      if(!innerCar) {
+        innerCar = new InnerCar;
+
+      }
+      innerCar.addScript();
+      innerCar.listens();
+    });
 
     // 颜色和轮毂菜单
     $menuItem.on('click', function (e) {
+      e.stopPropagation();
       var $me = $(this);
-      $menu.removeClass('.menu_color');
+      $menuItem.removeClass('menu_active');
+      $me.addClass('menu_active');
+      if($me.attr('id') === 'menu_color') {
+        $('.color_blocks').show();
+        $('.hubcaps').hide();
+      } else {
+        $('.color_blocks').hide();
+        $('.hubcaps').show();
+      }
     })
-  }
+  };
 
   car.prototype.load360 = function load360() {
-    var width = window.screen.availWidth - 17;
-    var height = $('.car_con').height();
+    var width = $('.place_img').width();
+    var height = $('.place_img').height();
     var frames = SpriteSpin.sourceArray('./images/1920_550/K8_360_comp_lm_' + this.color + '_' + this.wheel + '_1920_550_v008/K8_360_comp_lm_' + this.color + '_' + this.wheel + '_1920_550_v008.{frame}.png', {
       frame: [0, 60],
       digits: 4
@@ -148,54 +204,132 @@
     });
   }
 
-  var innerCar = function () {
-    this.color = 'white';
-    this.row = 2;
-  }
+  function InnerCar() {
+    this.color = 'brown';
+    this.row = 'one';
+    this.angle = 1;
+    this.colorText = {
+      white: "白色",
+      black: '黑色',
+      red: '棕色'
+    };
+    this.colorValue = {
+      white: '#ffffff',
+      black: '#191919',
+      brown: '#AC6645'
+    }
+  };
 
-  innerCar.prototype.lists = function lists() {
+  InnerCar.prototype.listens = function lists() {
     var vm = this;
+    var $iMenuItem = $('.i_menu_item');
+    var $iColorBlo = $('.i_color_blocks');
+    var $angle = $('.angle');
+    var $iColorItem = $('.i_color_item');
+    var $angleWrap = $('.angle_wrap');
 
-  }
+    $('.go_to_out').on('click', function (e) {
+      e.stopPropagation();
+      panelSwitch(true);
+    });
 
-  innerCar.prototype.addScript = function load() {
+    $iMenuItem.on('click', function (e) {
+      var $me = $(this);
+      $iMenuItem.removeClass('i_menu_active');
+      $me.addClass('i_menu_active');
+      if($me.attr('id') === 'i_color') {
+        $iColorBlo.show();
+        $angle.hide();
+      } else {
+        $iColorBlo.hide();
+        $angle.show();
+      }
+    });
+
+    // 颜色切换监听
+    $iColorItem.on('click', function (e) {
+      e.stopPropagation();
+      var $me = $(this);
+      $iColorItem.removeClass('i_color_active');
+      $me.addClass('i_color_active');
+      var color = $me.data('color');
+      $iColorItem.css('box-shadow', 'none');
+      $me.css('box-shadow', '0 0 0 3px #999999, 0 0 0 5px' + vm.colorValue[color]);
+      vm.loadVR(vm.row, color);
+    })
+
+    // 驾驶位监听
+    $angleWrap.on('click', function (e) {
+      e.stopPropagation();
+      var $me = $(this);
+      $angleWrap.removeClass('angle_active');
+      $me.addClass('angle_active');
+      var row = $me.find('p').data('row');
+      vm.loadVR(row, vm.color);
+    })
+  };
+
+  InnerCar.prototype.addScript = function load() {
     var vm = this;
-    if (isFirst) {
-      var scriptForPhoto = document.createElement("script");
+    var scriptForPhoto = document.getElementById('scriptForPho');
+    if (!scriptForPhoto) {
+
+      scriptForPhoto = document.createElement("script");
       scriptForPhoto.type = "text/javascript";
       scriptForPhoto.src = "./js/photo-sphere-viewer.js";
+      scriptForPhoto.id = "scriptForPho"
       document.body.appendChild(scriptForPhoto);
 
-      var scriptForThree = document.createElement("script");
-      scriptForThree.type = "text/javascript";
-      scriptForThree.src = "./js/three.min.js";
-      document.body.appendChild(scriptForThree);
+      scriptForPhoto.onload = function () {
 
-      scriptForThree.onload = function () {
-        $('.wrap').hide();
-        $('.innder').show();
-        vm.loadVR();
+        var scriptForThree = document.createElement("script");
+        scriptForThree.type = "text/javascript";
+        scriptForThree.src = "./js/three.min.js";
+        document.body.appendChild(scriptForThree);
+
+        scriptForThree.onload = function () {
+          panelSwitch(false);
+          vm.loadVR(vm.row, vm.color);
+        }
       }
+    } else {
+      panelSwitch(false);
+      vm.loadVR(vm.row, vm.color);
     }
   }
 
-  innerCar.prototype.loadVR = function loadVR() {
+  InnerCar.prototype.loadVR = function loadVR(row, color) {
     var vrShow = document.getElementById('vr_show');
-    var PSV = new PhotoSphereViewer({
+    $(vrShow).innerHTML = '';
+    this.PSV = new PhotoSphereViewer({
       // Path to the panorama
-      panorama: './images/fullscreen/三排_棕.jpg',
+      panorama: './images/fullscreen/' + row + '_' + color + '.jpg',
 
       // Container
       container: vrShow,
       time_anim: 3000,
-      navbar: true,
-      navbar_style: {
-        backgroundColor: 'rgba(58, 67, 77, 0.7)'
-      },
+      navbar: false,
       size: {
         height: window.innerHeight || document.clientHeight
-      }
+      },
+      default_position: {
+        long: - Math.PI / 2,
+        lat: 0
+      },
+      loading_msg: ''
     });
+  }
+
+  // 外观内饰切换
+  function panelSwitch(type) {
+    if(type) {
+      isOut = true;
+      $('.wrap').show();
+      $('.inner').hide();
+    } else {
+      $('.wrap').hide();
+      $('.inner').show();
+    }
   }
 
 </script>
