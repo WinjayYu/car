@@ -10,10 +10,11 @@
   <meta http-equiv="cache-control" content="no-cache" />
   <title>pc首页</title>
   <link rel="stylesheet" href="./css/reset.css">
-  <link rel="stylesheet" href="./css/pc_style_v004.css">
+  <link rel="stylesheet" href="./css/pc_style_v007.css">
 </head>
 <body>
 <div class="wrap pc">
+  <!--<div class="logo_text">全新<span>JEEP</span>大指挥官</div>-->
   <div class="car_con">
     <img src="./images/go-into.png" alt="" class="rotate ro_left">
     <img src="./images/1920_550/K8_360_comp_lm_black_limited_1920_550_v008/K8_360_comp_lm_black_limited_1920_550_v008.0000.png" alt="" class="place_img" style="width: 100%">
@@ -26,11 +27,11 @@
       <span class="menu_item" id="menu_hubcaps">轮毂</span>
     </div>
     <div class="color_blocks">
-      <div class="color_text_wrap"><span class="color_item color_active white" data-color="white"></span><p class="text_for_color">喀纳斯白</p></div>
+      <div class="color_text_wrap"><span class="color_item color_active brown" data-color="brown"></span><p class="text_for_color">阿布扎比棕</p></div>
+      <div class="color_text_wrap"><span class="color_item white" data-color="white"></span><p class="text_for_color"></p></div>
       <div class="color_text_wrap"><span class="color_item black" data-color="black"></span><p class="text_for_color"></p></div>
-      <div class="color_text_wrap"><span class="color_item red" data-color="red"></span><p class="text_for_color"></p></div>
       <div class="color_text_wrap"><span class="color_item crystal" data-color="crystal"></span><p class="text_for_color"></p></div>
-      <div class="color_text_wrap"><span class="color_item brown" data-color="brown"></span><p class="text_for_color"></p></div>
+      <div class="color_text_wrap"><span class="color_item red" data-color="red"></span><p class="text_for_color"></p></div>
       <div class="color_text_wrap"><span class="color_item blue" data-color="blue"></span><p class="text_for_color"></p></div>
     </div>
     <div class="hubcaps">
@@ -55,9 +56,9 @@
         <span class="i_menu_item" id="i_angle">视角</span>
       </div>
       <div class="i_color_blocks">
-        <div class="i_color_text_wrap"><span class="i_color_item i_color_active brown" data-color="brown"></span><p class="text_for_color">棕色</p></div>
-        <div class="i_color_text_wrap"><span class="i_color_item white" data-color="white"></span><p class="text_for_color">白色</p></div>
-        <div class="i_color_text_wrap"><span class="i_color_item black" data-color="black"></span><p class="text_for_color">黑色</p></div>
+        <div class="i_color_text_wrap"><span class="i_color_item i_color_active brown" data-color="brown"></span><p class="text_for_color">阿布扎比棕</p></div>
+        <div class="i_color_text_wrap"><span class="i_color_item white" data-color="white"></span><p class="text_for_color">喀纳斯白</p></div>
+        <div class="i_color_text_wrap"><span class="i_color_item black" data-color="black"></span><p class="text_for_color">北极黑</p></div>
       </div>
       <div class="angle">
         <div class="angle_wrap angle_active">
@@ -107,13 +108,13 @@
   })
 
   var car = function Car() {
-    this.color = 'white';    // 颜色
+    this.color = 'brown';    // 颜色
     this.wheel = 'limited';   // 轮毂
     this.height = 550; // 初始高度
     this.colorText = {
       white: '喀纳斯白',
       red: '波尔多红',
-      crystal: '水晶色',
+      crystal: '西西里灰',
       brown: '阿布扎比棕',
       blue: '斐济蓝',
       black: '北极黑'

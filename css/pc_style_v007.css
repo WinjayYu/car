@@ -49,7 +49,6 @@
 }
 
 .pc .car_color {
-    font-family: PingFangSC-Regular;
     font-size: 24px;
     color: #000000;
     text-align: center;
@@ -200,7 +199,7 @@
     bottom: 0;
     height: 156px;
     width: 100%;
-    background: rgba(255,255,255, 0.38);
+    /*background: rgba(255,255,255, 0.38);*/
     text-align: center;
     padding-top: 35px;
 }
@@ -218,7 +217,7 @@
 }
 
 .inner .footer_right p {
-    font-family: PingFangSC-Regular;
+    font-family: hanyimiddle;
     font-size: 16px;
     line-height: 22px;
     text-shadow: 0 0 4px rgba(0,0,0,0.40);
@@ -348,7 +347,12 @@
     left: 20px;
     font-size: 30px;
     font-weight: bold;
-    color: #7e7870;
+    color: #000;
+    font-family: hanyibig;
+}
+
+.logo_text span {
+    font-family: DINBold;
 }
 
 .pc .box_fix {
@@ -416,28 +420,28 @@
 
 @font-face {
     font-family: 'hanyibig';
-    src:url('../fonts/汉仪大黑简.TTF') format('truetype');
+    src:url('../fonts/HANYI-BIG.TTF') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'hanyimiddle';
-    src:url('../fonts/汉仪中黑简.TTF') format('truetype');
+    src:url('../fonts/HANYI-MEDIUM.TTF') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'DINBold';
-    src:url('../fonts/DIN-BOLD副本.OTF');
+    src:url('../fonts/DIN-BOLD.OTF');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'DINMedium';
-    src:url('../fonts/DIN-MEDIUM副本.OTF');
+    src:url('../fonts/DIN-MEDIUM.OTF');
     font-weight: normal;
     font-style: normal;
 }
