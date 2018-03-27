@@ -1,0 +1,443 @@
+.pc {
+    min-width: 1200px;
+    margin-top: 30px;
+}
+
+.pc .car_con {
+    position: relative;
+}
+
+.pc .car_img {
+    position: absolute!important;
+    top: 0;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.pc .place_img {
+    visibility: hidden;
+}
+
+
+.pc .rotate {
+    position: absolute;
+    top: 260px;
+}
+
+.pc .ro_left {
+    left: 213px;
+    transform: rotate(180deg);
+}
+
+.pc .ro_right {
+    right: 240px;
+}
+
+/*.pc .jump {*/
+    /*position: absolute;*/
+    /*right: 30px;*/
+    /*top: 30px;*/
+    /*background: #e6e6e6;*/
+    /*border-radius: 3px;*/
+    /*padding: 8px 22px;*/
+    /*cursor: pointer;*/
+/*}*/
+
+.pc .butt_group {
+    text-align: center;
+}
+
+.pc .car_color {
+    font-family: PingFangSC-Regular;
+    font-size: 24px;
+    color: #000000;
+    text-align: center;
+    line-height: 30px;
+}
+
+.pc .color_blocks {
+    font-size: 0;
+}
+
+.pc .color_blocks .color_item{
+    display: inline-block;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    transition: all .3s ease;
+    margin-top: 18px;
+    cursor: pointer;
+}
+
+.pc .color_blocks .color_text_wrap:first-child {
+    margin-left: 0;
+}
+
+.pc .color_blocks .color_active {
+    box-shadow: 0 0 0 3px #d1e9f9,
+                0 0 0 5px #999999;
+    /*transform: scale(1.4);*/
+}
+
+.pc .color_blocks .color_text_wrap .text_for_color {
+    font-size: 14px;
+    margin-top: 12px;
+    visibility: hidden;
+    font-family: hanyimiddle;
+}
+
+.pc .color_blocks .color_active + p {
+    visibility: visible!important;
+}
+
+.pc .menu .menu_item {
+    position: relative;
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin-left: 34px;
+    cursor: pointer;
+    font-family: hanyimiddle;
+}
+
+.pc .menu .menu_active:after {
+    content: " ";
+    background: url("../images/triangle.png") no-repeat center;
+    background-size: 50px 10px;
+    position: absolute;
+    bottom: -15px;
+    width: 50px;
+    height: 10px;
+    left: -5px;
+}
+
+.pc .color_blocks .color_text_wrap {
+    display: inline-block;
+    margin-left: 24px;
+    vertical-align: text-top;
+}
+
+/*.pc .color_blocks .color_active:after {*/
+    /*content: attr(data-content) '白色';*/
+    /*display: block;*/
+/*}*/
+
+.pc .hubcaps {
+    margin-top: 30px;
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    color: #000000;
+}
+
+.pc .hubcaps .hubcap_item {
+    /*background: #e6e6e6;*/
+    /*border-radius: 3px;*/
+    /*padding: 5px 23px;*/
+    transition: background .3s ease;
+    /*margin-left: 33px;*/
+    vertical-align: text-top;
+    width: 60px;
+    display: inline-block;
+}
+
+.pc .hubcaps .hubcap_item:first-child {
+    margin-left: 0;
+}
+
+.pc .hubcaps .hubcap_item img {
+    border-radius: 50%;
+    border: 2px solid #fff;
+
+}
+
+.pc .hubcaps .hubcap_text{
+    font-family: DINMedium;
+    text-shadow: 0 0 4px rgba(0,0,0,0.40);
+    font-size: 14px;
+}
+
+.pc .hubcaps .wheel_active img{
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #F5BB3F;
+}
+
+#vr_show {
+    width: 100%;
+    height: 100%;
+}
+
+.inner {
+    display: none;
+}
+
+.pc .hubcaps {
+    display: none;
+}
+
+.pc .color_blocks{
+    padding-top: 20px;
+}
+
+.pc .out_foot_right {
+    display: inline-block;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    text-align: center;
+}
+
+.pc .out_foot_right .jump {
+    width: 80px;
+}
+
+.pc .out_foot_right .steering_text {
+    font-size: 16px;
+    text-shadow: 0 0 4px rgba(0,0,0,0.40);
+    font-family: hanyimiddle;
+}
+
+.inner .i_footer {
+    position: fixed;
+    bottom: 0;
+    height: 156px;
+    width: 100%;
+    background: rgba(255,255,255, 0.38);
+    text-align: center;
+    padding-top: 35px;
+}
+
+.inner .footer_right {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    text-align: center;
+}
+
+.inner .footer_right .go_to_out {
+    width: 80px;
+    height: 80px;
+}
+
+.inner .footer_right p {
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    line-height: 22px;
+    text-shadow: 0 0 4px rgba(0,0,0,0.40);
+}
+
+.inner .i_menu .i_menu_item {
+    position: relative;
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin-left: 34px;
+    cursor: pointer;
+    font-family: hanyimiddle;
+}
+
+.inner .i_menu .i_menu_item.i_menu_active:after {
+    content: " ";
+    background: url(../images/triangle.png) no-repeat center;
+    background-size: 50px 10px;
+    position: absolute;
+    bottom: -15px;
+    width: 50px;
+    height: 10px;
+    left: -5px;
+}
+
+.inner .i_color_blocks,
+.inner .angle {
+    margin-top: 28px;
+}
+
+.inner .i_color_blocks .i_color_text_wrap {
+    display: inline-block;
+    margin-left: 24px;
+    vertical-align: text-top;
+}
+
+.inner .i_color_blocks .i_color_text_wrap .i_color_item {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    transition: all .3s ease;
+    margin-top: 18px;
+    cursor: pointer;
+    background-image: linear-gradient(209deg, #AC6645 14%, #000000 100%);
+    border-radius: 50%;
+}
+
+.inner .i_color_blocks .i_color_text_wrap:nth-of-type(2) .i_color_item {
+    background-image: linear-gradient(-155deg, #ACACAC 0%, #000000 100%);
+}
+
+.inner .i_color_blocks .i_color_text_wrap:nth-of-type(3) .i_color_item{
+    background:#000;
+}
+
+.inner .i_color_blocks  .i_color_text_wrap  .i_color_item.i_color_active {
+    box-shadow: 0 0 0 3px #999999, 0 0 0 5px #AC6645;
+}
+
+.inner .angle {
+    display: none;
+}
+
+.inner .angle .angle_wrap{
+    display: inline-block;
+    text-align: center;
+}
+
+.inner .angle .angle_wrap .row_block {
+    width: 40px;
+    height: 3px;
+    background: #2A2A2A;
+    border-radius: 2px;
+    margin-top: 10px;
+}
+
+.inner .angle .angle_wrap.angle_active .row_block.row-active {
+    background: #F5BB3F;
+}
+
+.inner .angle .angle_wrap .three_row {
+    display: inline-block;
+}
+
+.inner .angle .three_row {
+    text-align: center;
+}
+
+.inner .angle .three_row div {
+    margin-top: -10px;
+}
+
+.inner .i_color_blocks .i_color_item + p {
+    margin-top: 12px;
+    visibility: hidden;
+}
+
+.inner .i_color_blocks .i_color_item.i_color_active + p {
+    visibility: visible;
+}
+
+.inner .angle_wrap p {
+    visibility: hidden;
+    margin-top: 10px;
+    font-family: hanyimiddle;
+}
+
+.inner .angle_wrap.angle_active p {
+    visibility: visible;
+}
+
+.inner .angle_wrap:first-child.angle_active .three_row .row_block:first-child {
+    background: #F5BB3F;
+}
+
+.inner .angle_wrap:nth-of-type(2).angle_active .three_row .row_block:nth-of-type(2) {
+    background: #F5BB3F;
+}
+
+.inner .angle_wrap:nth-of-type(3).angle_active .three_row .row_block:nth-of-type(3) {
+    background: #F5BB3F;
+}
+
+.logo_text {
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #7e7870;
+}
+
+.pc .box_fix {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: transparent;
+    z-index: 8;
+    /*display: none;*/
+}
+
+.boxLoading {
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #F5BB3F;
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    position: absolute;
+}
+
+.box {
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    top: 40%;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: 0 auto;
+    margin-top: -30px;
+    text-align: center;
+}
+
+.box p {
+    color: #F5BB3F;
+    font-size: 17px;
+    margin-top: 17px;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@font-face {
+    font-family: 'hanyibig';
+    src:url('../fonts/汉仪大黑简.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'hanyimiddle';
+    src:url('../fonts/汉仪中黑简.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DINBold';
+    src:url('../fonts/DIN-BOLD副本.OTF');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DINMedium';
+    src:url('../fonts/DIN-MEDIUM副本.OTF');
+    font-weight: normal;
+    font-style: normal;
+}
