@@ -10,7 +10,7 @@
   <meta http-equiv="cache-control" content="no-cache" />
   <title>pc首页</title>
   <link rel="stylesheet" href="./css/reset.css">
-  <link rel="stylesheet" href="./css/pc_style_v003.css">
+  <link rel="stylesheet" href="./css/pc_style_v004.css">
 </head>
 <body>
 <div class="wrap pc">
@@ -26,23 +26,25 @@
       <span class="menu_item" id="menu_hubcaps">轮毂</span>
     </div>
     <div class="color_blocks">
-      <div class="color_text_wrap"><span class="color_item color_active white" data-color="white"></span><p class="text_for_color">白色</p></div>
+      <div class="color_text_wrap"><span class="color_item color_active white" data-color="white"></span><p class="text_for_color">喀纳斯白</p></div>
       <div class="color_text_wrap"><span class="color_item black" data-color="black"></span><p class="text_for_color"></p></div>
       <div class="color_text_wrap"><span class="color_item red" data-color="red"></span><p class="text_for_color"></p></div>
       <div class="color_text_wrap"><span class="color_item crystal" data-color="crystal"></span><p class="text_for_color"></p></div>
       <div class="color_text_wrap"><span class="color_item brown" data-color="brown"></span><p class="text_for_color"></p></div>
+      <div class="color_text_wrap"><span class="color_item blue" data-color="blue"></span><p class="text_for_color"></p></div>
     </div>
     <div class="hubcaps">
-      <span class="hubcap_item wheel_active" data-wheel="limited"><img src="./images/hubcap-1.png" alt=""></span>
-      <span class="hubcap_item" data-wheel="overland"><img src="./images/hubcap-2.png" alt=""></span>
-      <span class="hubcap_item" data-wheel="summit"><img src="./images/hubcap-3.png" alt=""></span>
-      <p class="hubcap_text">19”合金轮毂-Summit</p>
+      <span class="hubcap_item wheel_active" data-wheel="limited"><img src="./images/hubcap-1.png" alt=""><p class="hubcap_text">Summit</p></span>
+      <span class="hubcap_item" data-wheel="overland"><img src="./images/hubcap-2.png" alt=""><p class="hubcap_text"></p></span>
+      <span class="hubcap_item" data-wheel="summit"><img src="./images/hubcap-3.png" alt=""><p class="hubcap_text"></p></span>
+
     </div>
   </div>
   <div class="out_foot_right">
     <img src="./images/steering_wheel.png" alt="" class="jump">
     <p class="steering_text">内饰</p>
   </div>
+  <div class="box_fix"><div class="box"><div class="boxLoading"></div><p>0%</p></div></div>
 </div>
 <div class="inner">
   <div id="vr_show"></div>
@@ -109,19 +111,20 @@
     this.wheel = 'limited';   // 轮毂
     this.height = 550; // 初始高度
     this.colorText = {
-      white: '白色',
-      red: '红色',
+      white: '喀纳斯白',
+      red: '波尔多红',
       crystal: '水晶色',
-      brown: '棕色',
-      blue: '蓝色',
-      black: '黑色'
+      brown: '阿布扎比棕',
+      blue: '斐济蓝',
+      black: '北极黑'
     };
     this.colorValue = {
       white: '#999999',
       red: '#A60000',
       crystal: '#D3B98E',
       brown: '#A86233',
-      black: '#191919'
+      black: '#191919',
+      blue: '#2378BB'
     };
   };
 
@@ -135,6 +138,8 @@
     var $hubcapItemList = $('.hubcap_item'); // 轮毂按钮
     var $menuItem = $('.menu_item'); // 颜色轮毂菜单
     var $hubcapText = $('.hubcap_text');
+    var $textForColor = $('.text_for_color');
+
 
     $colorItemList.on('click', function (e) {
       e.stopPropagation();
@@ -144,6 +149,7 @@
       $me.addClass('color_active');
       vm.color = $me.data('color');
       $me.css('box-shadow', '0 0 0 3px #d1e9f9, 0 0 0 5px' +　vm.colorValue[vm.color]);
+      $textForColor.text('');
       $me.next().text(vm.colorText[vm.color]);
       vm.load360();
       isFirst = false;
@@ -155,7 +161,8 @@
       $hubcapItemList.removeClass('wheel_active');
       $me.addClass('wheel_active');
       vm.wheel = $me.data('wheel');
-      $hubcapText.text('19”合金轮毂-' + vm.wheel);
+      $hubcapText.text('');
+      $me.find('p').text(vm.wheel);
       vm.load360();
       isFirst = false;
     });
@@ -189,6 +196,8 @@
   car.prototype.load360 = function load360() {
     var width = $('.place_img').width();
     var height = $('.place_img').height();
+    var $boxfix = $('.box_fix');
+    var loadIndex;
     var frames = SpriteSpin.sourceArray('./images/1920_550/K8_360_comp_lm_' + this.color + '_' + this.wheel + '_1920_550_v008/K8_360_comp_lm_' + this.color + '_' + this.wheel + '_1920_550_v008.{frame}.png', {
       frame: [0, 60],
       digits: 4
@@ -200,7 +209,26 @@
       module: "360",
       sense: -1,
       source: frames,
-      animate: false
+      animate: false,
+      onInit: function () {
+        $boxfix.show();
+        loadIndex = 0;
+        console.log("正在加载");
+      },
+      onProgress: function (a, b, c, d) {
+        loadIndex = loadIndex + 1;
+        var p = parseInt(parseFloat(parseFloat(loadIndex) / frames.length) * 100);
+        if (p > 100) {
+          p = 100;
+        }
+        $boxfix.find('p').html(p + "%");
+      },
+      onLoad: function () {
+        console.log("加载完成");
+        $boxfix.hide();
+        $boxfix.find('p').html("0%");
+        //$('.loading_wrap').hide();
+      },
     });
   }
 
@@ -211,7 +239,7 @@
     this.colorText = {
       white: "白色",
       black: '黑色',
-      red: '棕色'
+      red: '红色'
     };
     this.colorValue = {
       white: '#ffffff',
