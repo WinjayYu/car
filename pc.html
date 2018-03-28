@@ -10,14 +10,14 @@
   <meta http-equiv="cache-control" content="no-cache" />
   <title>pc首页</title>
   <link rel="stylesheet" href="./css/reset.css">
-  <link rel="stylesheet" href="./css/pc_style_v007.css">
+  <link rel="stylesheet" href="./css/pc_style_v017.css">
 </head>
 <body>
+<img class="logo" src="./images/logo.png" />
 <div class="wrap pc">
-  <!--<div class="logo_text">全新<span>JEEP</span>大指挥官</div>-->
   <div class="car_con">
     <img src="./images/go-into.png" alt="" class="rotate ro_left">
-    <img src="./images/1920_550/K8_360_comp_lm_black_limited_1920_550_v008/K8_360_comp_lm_black_limited_1920_550_v008.0000.png" alt="" class="place_img" style="width: 100%">
+    <img src="./images/1920_550/K8_360_comp_lm_black_limited_1920_550_v008/K8_360_comp_lm_black_limited_1920_550_v008.0000.png" alt="" id="place" class="place_img" style="width: 100%">
     <div class="car_img" id="car360"></div>
     <img src="./images/go-into.png" alt="" class="rotate ro_right">
   </div>
@@ -35,7 +35,7 @@
       <div class="color_text_wrap"><span class="color_item blue" data-color="blue"></span><p class="text_for_color"></p></div>
     </div>
     <div class="hubcaps">
-      <span class="hubcap_item wheel_active" data-wheel="limited"><img src="./images/hubcap-1.png" alt=""><p class="hubcap_text">Summit</p></span>
+      <span class="hubcap_item wheel_active" data-wheel="limited"><img src="./images/hubcap-1.png" alt=""><p class="hubcap_text">limited</p></span>
       <span class="hubcap_item" data-wheel="overland"><img src="./images/hubcap-2.png" alt=""><p class="hubcap_text"></p></span>
       <span class="hubcap_item" data-wheel="summit"><img src="./images/hubcap-3.png" alt=""><p class="hubcap_text"></p></span>
 
@@ -56,9 +56,9 @@
         <span class="i_menu_item" id="i_angle">视角</span>
       </div>
       <div class="i_color_blocks">
-        <div class="i_color_text_wrap"><span class="i_color_item i_color_active brown" data-color="brown"></span><p class="text_for_color">阿布扎比棕</p></div>
-        <div class="i_color_text_wrap"><span class="i_color_item white" data-color="white"></span><p class="text_for_color">喀纳斯白</p></div>
-        <div class="i_color_text_wrap"><span class="i_color_item black" data-color="black"></span><p class="text_for_color">北极黑</p></div>
+        <div class="i_color_text_wrap"><span class="i_color_item i_color_active brown" data-color="brown"></span><p class="i_text_color">雅丹棕</p></div>
+        <div class="i_color_text_wrap"><span class="i_color_item white" data-color="white"></span><p class="i_text_color">帕米尔灰</p></div>
+        <div class="i_color_text_wrap"><span class="i_color_item black" data-color="black"></span><p class="i_text_color">石林黑</p></div>
       </div>
       <div class="angle">
         <div class="angle_wrap angle_active">
@@ -101,11 +101,26 @@
   var isOut = true;  // true在外观页  false在内饰页
   var innerCar;
 
+
+
   $(document).ready(function () {
+    var place = document.getElementById('place');
+    console.log(33);
+    if (place.complete) {
+      init()
+    } else {
+      place.addEventListener('load', init);
+      place.addEventListener('error', function() {
+        alert('出错了，请刷新重试！')
+      })
+    }
+  });
+
+  function init() {
     var carObj = new car();
     carObj.listeners();
     carObj.load360();
-  })
+  }
 
   var car = function Car() {
     this.color = 'brown';    // 颜色
@@ -127,6 +142,7 @@
       black: '#191919',
       blue: '#2378BB'
     };
+    this.frame = 4;
   };
 
   // 监听按钮点击
@@ -195,6 +211,7 @@
   };
 
   car.prototype.load360 = function load360() {
+    var vm = this;
     var width = $('.place_img').width();
     var height = $('.place_img').height();
     var $boxfix = $('.box_fix');
@@ -208,9 +225,10 @@
       height: height,
       behavior: "drag",
       module: "360",
-      sense: -1,
+      sense: -2,
       source: frames,
       animate: false,
+      frame: vm.frame,
       onInit: function () {
         $boxfix.show();
         loadIndex = 0;
@@ -230,6 +248,9 @@
         $boxfix.find('p').html("0%");
         //$('.loading_wrap').hide();
       },
+      onDraw: function (t, p) {
+        vm.frame = p.frame;
+      }
     });
   }
 
@@ -282,6 +303,7 @@
       $iColorItem.removeClass('i_color_active');
       $me.addClass('i_color_active');
       var color = $me.data('color');
+      vm.color = color;
       $iColorItem.css('box-shadow', 'none');
       $me.css('box-shadow', '0 0 0 3px #999999, 0 0 0 5px' + vm.colorValue[color]);
       vm.loadVR(vm.row, color);
@@ -294,6 +316,7 @@
       $angleWrap.removeClass('angle_active');
       $me.addClass('angle_active');
       var row = $me.find('p').data('row');
+      vm.row = row;
       vm.loadVR(row, vm.color);
     })
   };
